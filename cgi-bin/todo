@@ -1,0 +1,37 @@
+finalise database format
+	-quantity
+	-unit of measurement
+	-foodId
+	-generic food name (carrots) --eggs and hard boiled eggs would be seperate items
+	-food item style (baby carrots, shredded, ect)	
+
+
+show all availiable food -kyle
+
+show expired food -kyle
+	-can delete exired food, symbolised throwing away item
+
+show recipies
+
+show recipie ingredients and which of those ingredents you have,
+	-this will have a button that will subtract ingredents from your pantry,
+	 if you have a 1 lb carrot bag and a 2 lb carrot bag it should ignore the unit
+	 of measurements and use whichever is oldest. this will only look at the generic
+	 food name, not the barcode, foodId, or food style, carrots are carrots. 
+	-making a recipie subtracts quantity of that item availiable
+	-if utensils needed are not owned, amazon search for the item needed?
+
+show utensils
+
+cron job running daily to send email alerts if food expires
+
+nutrition facts:
+	-this will either pull from a site wiht general nutrition guidelines, or have
+	 the use enter nutrution infor manually.
+
+fix database to actually work -lucas
+
+running the database:
+	to enter data into item use insert specifying all relevant colombs except foodid then enter 
+
+redid logic on database should work now but it is different please ask all questions to sean or luke -sean -luke
