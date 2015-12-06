@@ -11,9 +11,9 @@ show all availiable food -kyle
 show expired food -kyle
 	-can delete exired food, symbolised throwing away item
 
-show recipies
+show recipes
 
-show recipie ingredients and which of those ingredents you have,
+show recipe ingredients and which of those ingredents you have,
 	-this will have a button that will subtract ingredents from your pantry,
 	 if you have a 1 lb carrot bag and a 2 lb carrot bag it should ignore the unit
 	 of measurements and use whichever is oldest. this will only look at the generic
@@ -23,11 +23,9 @@ show recipie ingredients and which of those ingredents you have,
 
 show utensils
 
-cron job running daily to send email alerts if food expires
+shopping list: show, add, delete - Sean, Kyle
 
-nutrition facts:
-	-this will either pull from a site wiht general nutrition guidelines, or have
-	 the use enter nutrution infor manually.
+cron job running daily to send email alerts if food expires
 
 fix database to actually work -lucas
 
