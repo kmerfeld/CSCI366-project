@@ -46,7 +46,7 @@ print '</head>';
 print '<body>';
 print "<h2>Deleted item</h2>";
 print "$food <br>";
-print ' <a href="www.kmerfeld1.me">home</a>';
+print ' <a href="http://kmerfeld1.me/pantry.html">home</a>';
 print "<br>";
 print ' <a href="/cgi-bin/item/expired.pl">back</a>';
 
