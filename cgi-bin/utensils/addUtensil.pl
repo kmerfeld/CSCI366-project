@@ -20,9 +20,10 @@ foreach $pair (@pairs)
 	$value =~ s/%(..)/pack("C", hex($1))/eg;
 	$FORM{$name} = $value;
 }
-$itemName	= $FORM{itemName};
-$quantity 	= $FORM{quantity};
-$unit		= $FORM{unitOfMeasurement};
+my $RecName		= $FORM{recName};
+my $instructions 	= $FORM{instructions};
+my $ingredients		= $FORM{ingredients};
+my $utensils		= $FORM{utensils};
 
 
 ##########################################################
@@ -33,13 +34,18 @@ $user="kyle";
 $password="O6Pi[A&{I3";  # the root password
 #connect to MySQL database
 my $dbh = DBI->connect("DBI:mysql:database=$db:host=$host", $user, $password ) or die $DBI::errstr;
-my $sth = $dbh->prepare("INSERT INTO shoppingList
-	(itemName, quantity, unitOfMeasurement)
-	values(\"$itemName\", \"$quantity\", \"$unit\")");
-$sth->execute() or die $DBI::errstr;
+#my $sth = $dbh->prepare("INSERT INTO recipes (recName instructions)
+#	values($RecName, $instructions)");
+#$sth->execute() or die $DBI::errstr;
 
-$sth->finish();
-#$dbh->commit() or die $DBI::errstr;
+@ing = split(/, /, $ingredients);
+#foreach (@ing) {
+#	my $sth = $dbh->prepare("INSERT INTO itemsNeeded (recName genericName)
+#		VALUES(\"$RecName\", \"$_\")");
+#	$sth->execute() or die $DBI::errstr;
+#}
+#$sth->finish();
+#$dbh->commit or die $DBI::errstr;
 
 ##########################################################
 #HTML CODE
@@ -49,11 +55,14 @@ print "<head>";
 print "<title>Pantry</title>";
 print "</head>";
 print "<body>";
-print "<p>Item = $itemName</p>";
-print "<p>quantity = $quantity</p>";
-print "<p>unit = $unit</p>";
+print "<p>recipe name = $RecName</p>";
+print "<p>instructions = $instructions</p>";
+print "<p>ingredients = $ingredients</p>";
+print "<p>utensils = $utensils</p>";
+print "<p>arrays</p>";
 print "@pairs";
-print "@ping";
+print "<p>ing</p>";
+print "@ing";
 print "<br>";
 print '<a href="http://kmerfeld1.me/pantry.html">home</a>';
 print "</body>";

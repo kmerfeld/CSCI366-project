@@ -20,13 +20,11 @@ foreach $pair (@pairs)
 	$value =~ s/%(..)/pack("C", hex($1))/eg;
 	$FORM{$name} = $value;
 }
-$RecName	= $FORM{recName};
-$instructions 	= $FORM{instructions};
-$ingredients	= $FORM{ingredients};
+my $RecName		= $FORM{recName};
+my $instructions 	= $FORM{instructions};
+my $ingredients		= $FORM{ingredients};
+my $utensils		= $FORM{utensils};
 
-
-my @itemS = split(/=/, $pair[5]);
-my @expd = split(/=/, $pair[6]);
 
 ##########################################################
 #ADD TO THE DATABASE
@@ -57,11 +55,14 @@ print "<head>";
 print "<title>Pantry</title>";
 print "</head>";
 print "<body>";
-print "<p>recipie name = $RecName</p>";
-print "<p>instructions = $RecName</p>";
+print "<p>recipe name = $RecName</p>";
+print "<p>instructions = $instructions</p>";
 print "<p>ingredients = $ingredients</p>";
+print "<p>utensils = $utensils</p>";
+print "<p>arrays</p>";
 print "@pairs";
-print "@ping";
+print "<p>ing</p>";
+print "@ing";
 print "<br>";
 print '<a href="http://kmerfeld1.me/pantry.html">home</a>';
 print "</body>";

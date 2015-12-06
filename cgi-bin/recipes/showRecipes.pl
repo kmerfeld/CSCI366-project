@@ -38,7 +38,7 @@ print '<body>';
 print "<h2>These are the recipes in your recipe book</h2>";
 print "<h2>Recipe:\tinstructions:</h2>";
 print "<h2>$output</h2>";
-print "<h2>$q</h2>";
+#print "<h2>$q</h2>";
 print '</body>';
 print '</html>';
 

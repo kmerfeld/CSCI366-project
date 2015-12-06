@@ -51,6 +51,8 @@ print "<p>Item = $itemName</p>";
 print "<p>quantity = $quantity</p>";
 print "<p>unit = $unit</p>";
 print "<br>";
+print '<a href="http://kmerfeld1.me/cgi-bin/shopping/expired.pl">View/Delete</a>';
+print "<br>";
 print '<a href="http://kmerfeld1.me/pantry.html">home</a>';
 print "</body>";
 print "</html>";

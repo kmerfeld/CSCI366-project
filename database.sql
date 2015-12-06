@@ -36,10 +36,7 @@ create table availUtensils
 create table untensilsNeeded
 (utnId int NOT NULL AUTO_INCREMENT,
 	recid varchar(20),
+	utName varchar(20),
 	quantityneed integer(20),
 	primary key(utnId),
-	FOREIGN KEY(recid) references recipes(recid);
-
-
-
-
+	FOREIGN KEY(recid) references recipes(recid));

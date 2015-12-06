@@ -16,7 +16,7 @@ my $dbh   = DBI->connect ("DBI:mysql:database=$db:host=$host",
 #prepare the query
 my $sth = $dbh->prepare( "
 	SELECT utName, quantity
-	FROM utensils");
+	FROM availUtensils");
 
 #execute the query
 $sth->execute( );
@@ -27,15 +27,13 @@ while ( my @row = $sth->fetchrow_array( ) )  {
 warn "Problem in retrieving results", $sth->errstr( ), "\n"
 if $sth->err( );
 
-
-
 print "Content-type:text/html\n\n";
 print '<html>';
 print '<head>';
 print '<title>Pantry</title>';
 print '</head>';
 print '<body>';
-print "<h2>These are the recipes in your recipe book</h2>";
+print "<h2>These are your available utensils:</h2>";
 print "<h2>Utensil:\tquantity:</h2>";
 print "<h2>$output</h2>";
 print "<h2>$q</h2>";

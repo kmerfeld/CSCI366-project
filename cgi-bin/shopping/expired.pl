@@ -36,16 +36,17 @@ print '<head>';
 print '<title>Pantry</title>';
 print '</head>';
 print '<body>';
-print "<h2>This is your shopping list</h2>";
-print "<h2>Item:\tquantity:\tunit:</h2>";
+print "<h2>This is the food that's on your list:</h2>";
+print "<h2>food:\titem:\tquantity:\tunit:</h2>";
 print '</body>';
 print '</html>';
 
 print '<FORM action="/cgi-bin/shopping/delete.pl" method="GET">';
-print 'itemId to delete: <input type="text" name="listId">';
+print 'listId to delete: <input type="text" name="listId">';
 print '<input type="submit" value="Submit">';
 print '</FORM>';
 print "<h2>$v</h2>";
-print '<br><a href="pantry.html">home</a>';
+print '<br><a href="http://kmerfeld1.me/shoppingList.html">Back</a>';
+print '<br><a href="http://kmerfeld1.me/pantry.html">home</a>';
 
 1;
