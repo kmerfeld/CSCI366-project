@@ -47,6 +47,6 @@ print 'foodId to delete: <input type="text" name="foodId">';
 print '<input type="submit" value="Submit">';
 print '</FORM>';
 print "<h2>$v</h2>";
-print '<br><a href="pantry.html">home</a>';
+print '<br><a href="http://kmerfeld1.me/pantry.html">home</a>';
 
 1;

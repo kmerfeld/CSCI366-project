@@ -22,7 +22,7 @@ foreach $pair (@pairs)
 }
 $genericName  	= $FORM{genericName};
 $quantity 	= $FORM{quantity};
-$unit 		= $FORM{unit};
+$unit 		= $FORM{unitOfMeasurement};
 $itemStyle 	= $FORM{itemStyle};
 $expdate 	= $FORM{expdate};
 
@@ -57,9 +57,9 @@ print "<p>quantity =  $quantity</p>";
 print "<p>itemStyle = $itemStyle</p>";
 print "<p>expdate = $expdate</p>";
 print "<p>unit = $unit</p>";
-print "@pairs";
 print "<br>";
-print '<a href="http://kmerfeld1.me/pantry.html">home</a>';
+print '<a href="http://kmerfeld1.me/additem.html">Add more</a>';
+print '<br><a href="http://kmerfeld1.me/pantry.html">home</a>';
 print "</body>";
 print "</html>";
 1;

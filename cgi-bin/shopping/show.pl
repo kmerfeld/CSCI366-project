@@ -37,7 +37,7 @@ print '<title>Pantry</title>';
 print '</head>';
 print '<body>';
 print "<h2>This is the food that's on your list:</h2>";
-print "<h2>food:\titem:\tquantity:\tunit:</h2>";
+print "<h2>Id:\titem:\tquantity:\tunit:</h2>";
 print '</body>';
 print '</html>';
 
@@ -46,7 +46,7 @@ print 'listId to delete: <input type="text" name="listId">';
 print '<input type="submit" value="Submit">';
 print '</FORM>';
 print "<h2>$v</h2>";
-print '<br><a href="http://kmerfeld1.me/shoppingList.html">Back</a>';
+print '<br><a href="http://kmerfeld1.me/shoppingList.html">Add Item</a>';
 print '<br><a href="http://kmerfeld1.me/pantry.html">home</a>';
-
+print "<br><a href='http://kmerfeld1.me/cgi-bin/shopping/delall.pl'>delete all</a>";
 1;

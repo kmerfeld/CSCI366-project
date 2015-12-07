@@ -33,11 +33,9 @@ $user="kyle";
 $password="O6Pi[A&{I3";  # the root password
 #connect to MySQL database
 my $dbh = DBI->connect("DBI:mysql:database=$db:host=$host", $user, $password ) or die $DBI::errstr;
-my $sth = $dbh->prepare("INSERT INTO shoppingList (itemName, quantity, unitOfMeasurement) values($itemName, $quantity, $unit)");
+my $sth = $dbh->prepare("INSERT INTO shoppingList (itemName, quantity, unitOfMeasurement) values(\"$itemName\", \"$quantity\", \"$unit\")");
 $sth->execute() or die $DBI::errstr;
-
 $sth->finish();
-#$dbh->commit() or die $DBI::errstr;
 
 ##########################################################
 #HTML CODE
@@ -51,7 +49,7 @@ print "<p>Item = $itemName</p>";
 print "<p>quantity = $quantity</p>";
 print "<p>unit = $unit</p>";
 print "<br>";
-print '<a href="http://kmerfeld1.me/cgi-bin/shopping/expired.pl">View/Delete</a>';
+print '<a href="http://kmerfeld1.me/cgi-bin/shopping/show.pl">View/Delete</a>';
 print "<br>";
 print '<a href="http://kmerfeld1.me/pantry.html">home</a>';
 print "</body>";

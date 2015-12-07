@@ -6,7 +6,8 @@ $db="pantry";
 $host="localhost";
 $user="kyle";
 $password="O6Pi[A&{I3";  # the root password
-my $output = "";
+my $v = "";
+my $q = "";
 #connect to MySQL database
 my $dbh   = DBI->connect ("DBI:mysql:database=$db:host=$host",
 	$user,
@@ -22,23 +23,23 @@ my $sth = $dbh->prepare( "
 $sth->execute( );
 ## Retrieve the results of a row of data and print
 while ( my @row = $sth->fetchrow_array( ) )  {
-	$output = $output . "|" .  " @row <br>";
+	$v = $v . "|" .  " @row <br>";
 }
 warn "Problem in retrieving results", $sth->errstr( ), "\n"
 if $sth->err( );
 
-print "Content-type:text/html\n\n";
+print "Content-type:text/html\r\n\r\n";
 print '<html>';
 print '<head>';
 print '<title>Pantry</title>';
 print '</head>';
 print '<body>';
-print "<h2>These are your available utensils:</h2>";
-print "<h2>Utensil:\tquantity:</h2>";
-print "<h2>$output</h2>";
-print '<br><a href="http://kmerfeld1.me/utensils.html">Back</a>';
-print '<br><a href="http://kmerfeld1.me/pantry.html">home</a>';
+print "<h2>This are your available utensils::</h2>";
+print "<h2>utensil:\tquantity:\t</h2>";
 print '</body>';
 print '</html>';
+print "<h2>$v</h2>";
+print '<br><a href="http://kmerfeld1.me/utensils.html">Add more</a>';
+print '<br><a href="http://kmerfeld1.me/pantry.html">home</a>';
 
 1;

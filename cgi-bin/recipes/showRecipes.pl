@@ -15,7 +15,7 @@ my $dbh   = DBI->connect ("DBI:mysql:database=$db:host=$host",
 
 #prepare the query
 my $sth = $dbh->prepare( "
-	SELECT recName, instructions
+	SELECT recId, recName
 	FROM recipes");
 
 #execute the query
@@ -28,7 +28,6 @@ warn "Problem in retrieving results", $sth->errstr( ), "\n"
 if $sth->err( );
 
 
-
 print "Content-type:text/html\n\n";
 print '<html>';
 print '<head>';
@@ -36,9 +35,13 @@ print '<title>Pantry</title>';
 print '</head>';
 print '<body>';
 print "<h2>These are the recipes in your recipe book</h2>";
-print "<h2>Recipe:\tinstructions:</h2>";
+print "<h2>Recipe ID:\tRecipe Name:</h2>";
 print "<h2>$output</h2>";
-#print "<h2>$q</h2>";
+print '<FORM action="/cgi-bin/recipes/showRecipeIngredient.pl" method="GET">'; 
+print 'view recipe: <input type="text" name="recId">';
+print '<input type="submit" value="Submit">'; 
+print '</FORM>';
+print '<br><a href="http://kmerfeld1.me/pantry.html">home</a>';
 print '</body>';
 print '</html>';
 

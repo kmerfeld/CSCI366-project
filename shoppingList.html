@@ -3,10 +3,10 @@
 		<title>Pantry</title>
 	</head>
 	<body>
-		<FORM action="/cgi-bin/shopping/expired.pl" method="GET">
-			Item:	<input type="text" name="itemName"> <br>
-			quantity <input type="text" name="quantity"> <br>
-			<select id="unit:">
+		<FORM action="/cgi-bin/shopping/addlist.pl" method="GET">
+			Item:	  <input type="text" name="itemName"> <br>
+			quantity: <input type="text" name="quantity"> <br>
+			Unit:     <select name="unitOfMeasurement">
 				<option value="oz">ounces</option>
 				<option value="lb">pounds</option>
 				<option value="ct">count</option>
@@ -16,7 +16,7 @@
 			<input type="submit" value="Submit">
 		</Form>
 		<br>
-		<a href="cgi-bin/shopping/expired.pl">View/delete</a>
+		<a href="cgi-bin/shopping/show.pl">View/delete</a>
 		<br>
 		<a href="pantry.html">home</a>
 	</body>

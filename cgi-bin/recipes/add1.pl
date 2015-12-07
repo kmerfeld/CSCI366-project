@@ -32,20 +32,45 @@ $db="pantry";
 $host="localhost";
 $user="kyle";
 $password="O6Pi[A&{I3";  # the root password
+
+
+
 #connect to MySQL database
 my $dbh = DBI->connect("DBI:mysql:database=$db:host=$host", $user, $password ) or die $DBI::errstr;
-#my $sth = $dbh->prepare("INSERT INTO recipes (recName instructions)
-#	values($RecName, $instructions)");
-#$sth->execute() or die $DBI::errstr;
 
-@ing = split(/, /, $ingredients);
-#foreach (@ing) {
-#	my $sth = $dbh->prepare("INSERT INTO itemsNeeded (recName genericName)
-#		VALUES(\"$RecName\", \"$_\")");
-#	$sth->execute() or die $DBI::errstr;
-#}
-#$sth->finish();
-#$dbh->commit or die $DBI::errstr;
+
+#insert in recipe
+my $sth = $dbh->prepare("INSERT INTO recipes (recName, instructions)
+	values(\"$RecName\", \"$instructions\")");
+$sth->execute() or die $DBI::errstr;
+$sth->finish();
+
+
+
+#get the recId for the recipe we just made
+$sth1 = $dbh->selectrow_array("
+	select recId
+	FROM recipes
+	WHERE recName=\'$RecName\' AND instructions=\'$instructions\'");
+my $recId = $sth1;
+
+# Insert ingredient list into itemsNeeded
+@split1 = split(/, /, $ingredients);
+foreach $item (@split1) {
+	my ($name, $quantity) = split(/ /, $item);
+	my $sth3 = $dbh->prepare("INSERT INTO itemsNeeded (recId, foodName, quantity) values (\"$recId\", \"$name\", \"$quantity\")");
+	$sth3->execute();
+	$sth3->finish();
+}
+
+# Insert Utensils into utensilsNeeded
+@split2 = split(/, /, $utensils);
+foreach $item (@split2) {
+	($name, $quantity) = split(/ /, $item);
+	my $sth3 = $dbh->prepare("INSERT INTO utensilsNeeded (recId, utName, quantity) values (\"$recId\", \"$name\", \"$quantity\")");
+	$sth3->execute();
+	$sth3->finish();
+}
 
 ##########################################################
 #HTML CODE
@@ -55,14 +80,11 @@ print "<head>";
 print "<title>Pantry</title>";
 print "</head>";
 print "<body>";
+print "<p>recID = $recId</p>";
 print "<p>recipe name = $RecName</p>";
 print "<p>instructions = $instructions</p>";
 print "<p>ingredients = $ingredients</p>";
 print "<p>utensils = $utensils</p>";
-print "<p>arrays</p>";
-print "@pairs";
-print "<p>ing</p>";
-print "@ing";
 print "<br>";
 print '<a href="http://kmerfeld1.me/pantry.html">home</a>';
 print "</body>";
