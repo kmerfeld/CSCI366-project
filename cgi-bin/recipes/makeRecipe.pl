@@ -63,6 +63,7 @@ my @nestRow;
 my $row;
 my $reqdItem;
 my $reqdQuantity;
+my $delId;
 
 #debugging
 my @itemDebug;
@@ -134,12 +135,19 @@ while (@row = $sth2->fetchrow_array)  {
 			if ($amount <= $reqdQuantity and $amount != 0 and $reqdQuantity != 0) {
 				# set reqd to reqd - amount
 				$reqdQuantity -= $amount;
-
+				
+				# get current items id to delete
+				my $toDelete = $dbh->selectrow_array("
+					select foodId
+					from item
+					where genericName=\'$reqdItem\'
+					order by expdate");
+				$delId = $toDelete;
+				
 				# delete item from database
 				my $delete = $dbh->prepare("
 					delete from item
-					where genericName=\'$reqdItem\'
-					order by expdate");
+					where foodId=\'$delId\'");
 				$delete->execute( );
 				$delete->finish( );
 			}
@@ -150,8 +158,7 @@ while (@row = $sth2->fetchrow_array)  {
 				my $update = $dbh->prepare("
 					update item
 					set quantity=\'$amount\'
-					where genericName=\'$reqdItem\'
-					order by expdate");
+					where genericName=\'$reqdItem\'");
 				$update->execute( );
 				$update->finish( );
 				last;
