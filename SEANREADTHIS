@@ -1,0 +1,14 @@
+<VirtualHost kmerfeld1.me:80>
+ServerAdmin webmaster@localhost
+DocumentRoot /var/www
+
+ScriptAlias /cgi-bin/ /var/www/cgi-bin/
+
+<Directory /var/www/cgi-bin/>
+Options ExecCGI
+AddHandler cgi-script cgi pl
+</Directory>    
+
+
+</VirtualHost>
+
